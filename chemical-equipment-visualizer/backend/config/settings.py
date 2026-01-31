@@ -101,3 +101,15 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+import os
+
+ALLOWED_HOSTS = [
+    "chemical-equipment-visualizer-m7e9.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.onrender.com",
+    "https://*.vercel.app",
+]
