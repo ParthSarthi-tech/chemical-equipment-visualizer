@@ -11,6 +11,7 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
     "chemical-equipment-visualizer-m7e9.onrender.com",
+    ".onrender.com",
     "localhost",
     "127.0.0.1",
 ]
@@ -94,10 +95,9 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://localhost:5173",  # If using Vite
-    "https://chemical-equipment-visualizer-m7e9.onrender.com",  # Your backend
-    # ADD YOUR VERCEL URL HERE - replace with your actual Vercel domain
-    "https://your-app-name.vercel.app",  # ← REPLACE THIS
+    "http://localhost:5173",
+    "https://chemical-equipment-visualizer-m7e9.onrender.com", 
+    "https://chemical-equipment-visualizer-virid.vercel.app",  
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -117,7 +117,7 @@ CORS_ALLOW_HEADERS = [
 # CSRF Settings
 CSRF_TRUSTED_ORIGINS = [
     "https://chemical-equipment-visualizer-m7e9.onrender.com",
-    "https://*.vercel.app",  # This allows all Vercel subdomains
+    "https://chemical-equipment-visualizer-virid.vercel.app",
 ]
 
 # Cookie Settings for Cross-Domain Authentication - CRITICAL FIX
