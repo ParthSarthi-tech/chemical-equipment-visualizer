@@ -1,12 +1,19 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-change-this-in-production'
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production')
 
-DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    "chemical-equipment-visualizer-m7e9.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -83,10 +90,14 @@ REST_FRAMEWORK = {
     ],
 }
 
-# CORS Settings - Allow React frontend
+# CORS Settings - CRITICAL FIX
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "http://localhost:5173",  # If using Vite
+    "https://chemical-equipment-visualizer-m7e9.onrender.com",  # Your backend
+    # ADD YOUR VERCEL URL HERE - replace with your actual Vercel domain
+    "https://your-app-name.vercel.app",  # ← REPLACE THIS
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -102,15 +113,20 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
-import os
 
-ALLOWED_HOSTS = [
-    "chemical-equipment-visualizer-m7e9.onrender.com",
-    "localhost",
-    "127.0.0.1",
-]
-
+# CSRF Settings
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.onrender.com",
-    "https://*.vercel.app",
+    "https://chemical-equipment-visualizer-m7e9.onrender.com",
+    "https://*.vercel.app",  # This allows all Vercel subdomains
 ]
+
+# Cookie Settings for Cross-Domain Authentication - CRITICAL FIX
+SESSION_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SECURE = True  # Required when SameSite=None
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_DOMAIN = None  # Let browser handle it
+
+CSRF_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = False  # Must be False so JS can read it
+CSRF_COOKIE_DOMAIN = None
