@@ -17,6 +17,45 @@ chemical-equipment-visualizer/
 └── sample_equipment_data.csv  # Sample data for testing
 ```
 
+## Quick Start
+
+### 1. Backend Setup (Django)
+
+```bash
+cd backend
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run migrations
+python manage.py migrate
+
+# Create superuser (for authentication)
+python manage.py createsuperuser
+
+# Start server
+python manage.py runserver
+```
+
+
+### 2. Frontend Setup (React)
+
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Frontend will run at: `http://localhost:3000`
+
 ## Features
 
 - CSV file upload with validation
