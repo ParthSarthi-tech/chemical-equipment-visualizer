@@ -94,7 +94,9 @@ Required columns:
 - **Auth**: Basic Authentication
 
 ## Demo Credentials
-
+When backend is availaible, use credentials:
+- Username: `Parth`
+- Password: `Intern1234`
 When backend is unavailable, use demo mode:
 - Username: `admin`
 - Password: `admin123`
